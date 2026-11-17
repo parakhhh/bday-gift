@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something Special For You</title>
+    <!-- Google Fonts for handwriting style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a1a; /* Dark outer background for focus */
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Container matching mobile scrapbook proportions */
+        .scrapbook-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px; /* Standard mobile phone display width */
+            height: 800px;
+            background: url('scrapbook-bg.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Overlaid Worn-out Page Box placed directly over the photo frame */
+        .frame-content {
+            position: absolute;
+            top: 35.8%;  /* Aligns inside the inner frame */
+            left: 17%;
+            width: 66%;
+            height: 27%;
+            
+            /* Aged/worn paper texturing */
+            background-color: #e6d5ac;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(139, 115, 85, 0.3) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+            
+            border: 1px solid #b8a27d;
+            box-shadow: inset 0 0 20px rgba(100, 70, 40, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        /* Handwritten Title inside paper */
+        .frame-content h1 {
+            color: #4a3319;
+            font-size: 1.8rem;
+            line-height: 1.2;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Interactive Hover Button */
+        .next-page-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #3b2312;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.95rem;
+            background: #d4c29a;
+            padding: 8px 16px;
+            border: 1px solid #7d6344;
+            border-radius: 4px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover Effect */
+        .next-page-btn:hover {
+            background-color: #8c2d19; /* Vintage red color */
+            color: #fff8eb;
+            border-color: #571a0e;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Click/Active effect */
+        .next-page-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scrapbook-container">
+        <!-- Overlay card on top of the black frame -->
+        <div class="frame-content">
+            <h1>our little universe ♡♡</h1>
+            <h2></h2>
+            <!-- Change 'next-page.html' to your second page file -->
+            <a href="page2.html" ><button class="next-page-btn">open our story &rarr;</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

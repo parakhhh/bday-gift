@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sealed Love Letter</title>
+    <!-- Fonts for handwritten letter look -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Caveat', cursive;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Outer Container */
+        .letter-container {
+            width: 100%;
+            max-width: 450px;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Aged Paper Look */
+        .letter-paper {
+            width: 100%;
+            background-color: #f4eae1;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(139, 115, 85, 0.25) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
+            border-radius: 8px;
+            border: 1px solid #c8b496;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            padding: 35px 25px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        /* Top Header Details */
+        .letter-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.85rem;
+            color: #7a5c3e;
+            border-bottom: 1px dashed #c8b496;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Salutation */
+        .salutation {
+            font-size: 2rem;
+            color: #3b2312;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Hidden Content (Unfolds after click) */
+        .letter-body {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 1s ease, opacity 0.8s ease 0.3s;
+            font-size: 1.4rem;
+            color: #2c1a0e;
+            line-height: 1.5;
+        }
+
+        .letter-body p {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* Red Wax Seal */
+        .wax-seal-wrapper {
+            text-align: center;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .wax-seal-wrapper:hover {
+            transform: scale(1.08);
+        }
+
+        .wax-seal {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle at 30% 30%, #a81c1c, #5e0b0b);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: #fce8bd;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 0 8px rgba(0,0,0,0.5);
+            border: 3px solid #7a1212;
+            position: relative;
+            user-select: none;
+        }
+
+        .seal-hint {
+            display: block;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.8rem;
+            color: #8c2d19;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* STATE: When Seal is Broken / Clicked */
+        .letter-paper.open .letter-body {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .letter-paper.open .wax-seal-wrapper {
+            opacity: 0;
+            pointer-events: none;
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        /* Next Page Button (Appears after letter opens) */
+        .next-btn-container {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            text-align: right;
+            transition: opacity 0.8s ease 0.8s;
+        }
+
+        .letter-paper.open .next-btn-container {
+            opacity: 1;
+            max-height: 60px;
+            margin-top: 25px;
+        }
+
+        .next-btn {
+            display: inline-block;
+            font-family: 'Special Elite', cursive;
+            text-decoration: none;
+            background: #8c2d19;
+            color: #fff8eb;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            box-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .next-btn:hover {
+            background: #611b0e;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <div class="letter-paper" id="letterPaper">
+            
+            <!-- Initials and Date -->
+            <div class="letter-header">
+                <span>K & P</span> <!-- Replace with your initials -->
+                <span>25.10.2023</span> <!-- Replace with your date -->
+            </div>
+
+            <!-- Front Greeting -->
+            <div class="salutation">to my favourite person ♡♡,</div>
+
+            <!-- Letter Content (Reveals when seal is clicked) -->
+            <div class="letter-body">
+                <p>i made this little place because sometimes words aren't enough</p>
+                <p>every single detail here is for you — to remind you how much you mean to me and how grateful i am to have you in my life .</p>
+            </div>
+
+            <!-- Wax Seal Button -->
+            <div class="wax-seal-wrapper" id="waxSeal" onclick="openLetter()">
+                <div class="wax-seal">♡</div>
+                <span class="seal-hint"> tap for kissies on cheekies ⁠ʕ⁠っ⁠•⁠ᴥ⁠•⁠ʔ⁠っ</span>
+            </div>
+
+            <!-- Link to Next Page -->
+            <div class="next-btn-container">
+                <a href="page3.html"><button class="next-btn"> for more huggie , press boobies ʕ⁠っ⁠•⁠ᴥ⁠•⁠ʔ⁠っ &rarr;</button></a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('letterPaper').classList.add('open');
+        }
+    </script>
+
+</body>
+</html>

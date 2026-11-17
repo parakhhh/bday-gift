@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>for when your mind gets loud ♡</title>
+
+<!-- Handwritten / calligraphy fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.55), transparent 20%),
+        radial-gradient(circle at 80% 75%, rgba(218,164,165,.20), transparent 25%),
+        linear-gradient(
+            135deg,
+            #eadbd1 0%,
+            #f3e5df 30%,
+            #ead7d2 65%,
+            #dfc9c4 100%
+        );
+
+    color: #39262b;
+}
+
+
+/* ======================================
+   PAPER TEXTURE
+====================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    opacity: .25;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(70,40,40,.035) 0px,
+            rgba(70,40,40,.035) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    z-index: 0;
+}
+
+
+/* ======================================
+   FLOATING FAIRY DUST
+====================================== */
+
+.sparkle {
+    position: fixed;
+    color: #fffaf4;
+    font-size: 18px;
+    z-index: 1;
+
+    animation:
+        sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+    0%,100% {
+        opacity: .2;
+        transform: scale(.6) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25) rotate(25deg);
+    }
+
+}
+
+
+/* ======================================
+   BIG RIBBON BOW
+====================================== */
+
+.bow {
+    position: fixed;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.bow.left {
+    top: 20px;
+    left: -20px;
+    transform: rotate(-12deg);
+}
+
+.bow.right {
+    top: 15px;
+    right: -25px;
+    transform: rotate(14deg);
+}
+
+.ribbon {
+    width: 150px;
+    height: 85px;
+
+    position: relative;
+}
+
+.ribbon::before,
+.ribbon::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+    height: 55px;
+
+    top: 10px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #8c2735 0px,
+            #8c2735 3px,
+            #a43a49 3px,
+            #a43a49 6px
+        );
+
+    border-radius: 60% 30% 65% 35%;
+
+    box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.18),
+        3px 5px 10px rgba(50,20,20,.18);
+}
+
+.ribbon::before {
+    left: 0;
+    transform: rotate(20deg);
+}
+
+.ribbon::after {
+    right: 0;
+    transform: rotate(-20deg);
+}
+
+.knot {
+
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    left: 57px;
+    top: 25px;
+
+    background: #7b1f2c;
+
+    border-radius: 50%;
+
+    z-index: 2;
+
+    box-shadow:
+        inset 0 0 0 3px rgba(255,255,255,.12),
+        2px 4px 8px rgba(40,20,20,.25);
+}
+
+
+/* ribbon tails */
+
+.ribbon-tail {
+
+    position: absolute;
+
+    width: 48px;
+    height: 100px;
+
+    top: 47px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #8c2735,
+            #8c2735 3px,
+            #a43a49 6px
+        );
+
+    z-index: -1;
+}
+
+.tail1 {
+    left: 48px;
+    transform: rotate(15deg);
+    clip-path: polygon(0 0,100% 0,80% 100%,40% 82%,0 100%);
+}
+
+.tail2 {
+    left: 88px;
+    transform: rotate(-15deg);
+    clip-path: polygon(0 0,100% 0,100% 100%,55% 82%,20% 100%);
+}
+
+
+/* ======================================
+   PAGE
+====================================== */
+
+.page {
+
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 92%);
+    min-height: 100vh;
+
+    margin: auto;
+
+    padding:
+        110px 30px
+        80px;
+
+}
+
+
+/* ======================================
+   LITTLE HANDWRITTEN NOTES
+====================================== */
+
+.note {
+
+    position: absolute;
+
+    font-family: "Caveat", cursive;
+
+    color: #6d343d;
+
+    font-size: 19px;
+
+    transform: rotate(-7deg);
+}
+
+.note.one {
+    left: 7%;
+    top: 190px;
+}
+
+.note.two {
+    right: 5%;
+    top: 370px;
+    transform: rotate(8deg);
+}
+
+.note.three {
+    left: 3%;
+    bottom: 170px;
+    transform: rotate(-5deg);
+}
+
+
+/* ======================================
+   FAIRIES
+====================================== */
+
+.fairy {
+
+    position: absolute;
+
+    font-size: 45px;
+
+    animation:
+        fairyFloat 5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 3px 5px rgba(70,30,40,.15));
+}
+
+.fairy.one {
+    right: 9%;
+    top: 190px;
+}
+
+.fairy.two {
+    left: 5%;
+    top: 500px;
+    animation-delay: 2s;
+}
+
+@keyframes fairyFloat {
+
+    0%,100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(5deg);
+    }
+
+}
+
+
+/* ======================================
+   TITLE
+====================================== */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.small-heading {
+
+    font-family: "Caveat", cursive;
+
+    font-size: 22px;
+
+    color: #76343e;
+
+    transform: rotate(-3deg);
+
+    display: inline-block;
+
+    margin-bottom: 8px;
+}
+
+h1 {
+
+    font-family: "Parisienne", cursive;
+
+    font-size:
+        clamp(48px, 8vw, 82px);
+
+    font-weight: 400;
+
+    color: #3b2429;
+
+    line-height: 1;
+
+    text-shadow:
+        1px 2px 0 rgba(255,255,255,.5);
+}
+
+.subtitle {
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 23px;
+
+    margin-top: 12px;
+
+    color: #68424a;
+}
+
+
+/* ======================================
+   MAIN LETTER
+====================================== */
+
+.letter {
+
+    position: relative;
+
+    width: min(650px, 100%);
+
+    margin: 50px auto;
+
+    padding:
+        45px 50px
+        55px;
+
+    background:
+        linear-gradient(
+            rgba(255,248,241,.96),
+            rgba(249,235,230,.96)
+        );
+
+    border:
+        1px solid rgba(80,40,40,.18);
+
+    box-shadow:
+
+        0 12px 30px rgba(70,35,35,.17),
+
+        0 2px 3px rgba(70,35,35,.12),
+
+        inset 0 0 40px rgba(160,100,80,.07);
+
+    transform: rotate(-1deg);
+
+    transition: .5s ease;
+}
+
+.letter:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-4px);
+
+    box-shadow:
+        0 20px 40px rgba(70,35,35,.2);
+}
+
+
+/* paper corners */
+
+.letter::before {
+
+    content: "♡";
+
+    position: absolute;
+
+    right: 20px;
+    top: 12px;
+
+    font-size: 22px;
+
+    color: #8e3643;
+
+    font-family: "Caveat", cursive;
+}
+
+.letter::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 22px;
+
+    background:
+        rgba(180,135,126,.32);
+
+    top: -12px;
+    left: 45%;
+
+    transform:
+        rotate(-3deg);
+
+}
+
+
+/* ======================================
+   LETTER HEADER
+====================================== */
+
+.letter-date {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom:
+        1px dashed rgba(70,40,40,.25);
+
+    padding-bottom: 10px;
+
+    margin-bottom: 28px;
+
+    font-family: "Caveat", cursive;
+
+    font-size: 17px;
+
+    color: #70434a;
+}
+
+.letter h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-style: italic;
+
+    font-size: 35px;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+
+    color: #3b272b;
+}
+
+.letter p {
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 22px;
+
+    line-height: 1.55;
+
+    color: #3f292e;
+
+    margin-bottom: 20px;
+}
+
+.emphasis {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-style: italic;
+
+    font-size: 26px;
+
+    color: #7c2835;
+
+    text-align: center;
+
+    margin:
+        25px 0;
+}
+
+
+/* ======================================
+   UNDERLINE
+====================================== */
+
+.hand-line {
+
+    width: 70%;
+
+    height: 1px;
+
+    margin: 25px auto;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #74333b 0px,
+            #74333b 4px,
+            transparent 4px,
+            transparent 8px
+        );
+
+    opacity: .45;
+}
+
+
+/* ======================================
+   OVERTHINKING BUTTON
+====================================== */
+
+.button-area {
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+.button {
+
+    display: inline-block;
+
+    padding:
+        14px 30px;
+
+    border: none;
+
+    background:
+        #8c2f3d;
+
+    color:
+        #fff6f0;
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    box-shadow:
+        3px 5px 0 rgba(65,30,30,.15);
+
+    transform: rotate(-1deg);
+
+    transition: .3s ease;
+}
+
+.button:hover {
+
+    transform:
+        rotate(1deg)
+        translateY(-3px);
+
+    background: #762430;
+}
+
+.button:active {
+
+    transform:
+        scale(.95);
+}
+
+
+/* ======================================
+   REMINDER RESULT
+====================================== */
+
+.reminder {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-left:
+        3px solid #8d3341;
+
+    background:
+        rgba(255,255,255,.35);
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    font-size: 23px;
+
+    line-height: 1.5;
+
+    color: #43282e;
+
+    display: none;
+
+    animation:
+        letterAppear .6s ease;
+}
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ======================================
+   PRESSED FLOWERS
+====================================== */
+
+.flower {
+
+    position: absolute;
+
+    font-size: 55px;
+
+    opacity: .75;
+
+    filter:
+        sepia(.25);
+
+    transform: rotate(-15deg);
+}
+
+.flower.one {
+    right: -35px;
+    bottom: 60px;
+}
+
+.flower.two {
+    left: -35px;
+    top: 130px;
+    transform: rotate(20deg);
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 60px;
+
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-size: 30px;
+
+    color: #71323b;
+}
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media(max-width:600px) {
+
+    .page {
+        padding-top: 100px;
+    }
+
+    .bow {
+        transform: scale(.65);
+    }
+
+    .bow.right {
+        right: -45px;
+    }
+
+    .bow.left {
+        left: -45px;
+    }
+
+    .letter {
+        padding:
+            35px 25px
+            40px;
+    }
+
+    .letter p {
+        font-size: 20px;
+    }
+
+    .letter h2 {
+        font-size: 30px;
+    }
+
+    .note {
+        display: none;
+    }
+
+    .fairy {
+        font-size: 32px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ======================================
+     SPARKLES
+====================================== -->
+
+<div class="sparkle" style="left:12%;top:14%;">✦</div>
+<div class="sparkle" style="left:25%;top:35%;animation-delay:1s;">✧</div>
+<div class="sparkle" style="right:18%;top:28%;animation-delay:2s;">⋆</div>
+<div class="sparkle" style="right:10%;bottom:25%;animation-delay:.7s;">✦</div>
+<div class="sparkle" style="left:18%;bottom:15%;animation-delay:1.5s;">✧</div>
+
+
+<!-- ======================================
+     BIG BOWS
+====================================== -->
+
+<div class="bow left">
+
+    <div class="ribbon">
+
+        <div class="knot"></div>
+
+        <div class="ribbon-tail tail1"></div>
+        <div class="ribbon-tail tail2"></div>
+
+    </div>
+
+</div>
+
+
+<div class="bow right">
+
+    <div class="ribbon">
+
+        <div class="knot"></div>
+
+        <div class="ribbon-tail tail1"></div>
+        <div class="ribbon-tail tail2"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     PAGE
+====================================== -->
+
+<div class="page">
+
+
+    <!-- FAIRIES -->
+
+    <div class="fairy one">
+        🧚🏻‍♀️
+    </div>
+
+    <div class="fairy two">
+        🧚🏻‍♀️
+    </div>
+
+
+    <!-- LITTLE SCRAPBOOK NOTES -->
+
+    <div class="note one">
+        read this slowly ♡
+    </div>
+
+    <div class="note two">
+        yes , I mean it .
+    </div>
+
+    <div class="note three">
+        breathe , silly .
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="small-heading">
+            a tiny reminder for my favourite person
+        </div>
+
+        <h1>
+            when your mind gets loud...
+        </h1>
+
+        <div class="subtitle">
+            come here. i'll sit with you for a little while ♡
+        </div>
+
+    </div>
+
+
+    <!-- MAIN LETTER -->
+
+    <div class="letter">
+
+        <div class="flower one">
+            🌸
+        </div>
+
+        <div class="flower two">
+            🌷
+        </div>
+
+
+        <div class="letter-date">
+
+            <span>
+                K & P ♡
+            </span>
+
+            <span>
+                just for you
+            </span>
+
+        </div>
+
+
+        <h2>
+            hey, overthinker...
+        </h2>
+
+
+        <p>
+            i know that little brain of yours is probably
+            running around right now, creating
+            approximately <b>7384 different scenarios .</b>
+        </p>
+
+
+        <p>
+            but before you believe any of them ,
+            i need you to stop for a second .
+        </p>
+
+
+        <div class="emphasis">
+
+            take a breath, baby .<br>
+            you don't have to solve everything tonight .
+
+        </div>
+
+
+        <div class="hand-line"></div>
+
+
+        <p>
+            you are loved .
+            <br>
+
+            you are enough .
+            <br>
+
+            you don't have to be perfect for me .
+            <br>
+
+            you don't have to have all the answers .
+        </p>
+
+
+        <p>
+            and please remember —
+            <b>
+                one bad moment does not change
+                how much you mean to me , okie dokie meri jaan ?
+            </b>
+        </p>
+
+
+        <p>
+            so if your brain starts telling you
+            scary little stories again n being meanie to you 
+            come back here , to me :D
+        </p>
+
+
+        <div class="emphasis">
+
+            i'll remind you again . ♡
+
+        </div>
+
+
+        <!-- BUTTON -->
+<div class="button-area">
+
+    <!-- FIRST BUTTON -->
+    <button
+        class="button"
+        id="startButton"
+        onclick="showNextReminder()">
+
+        i'm overthinking again 🥺
+
+    </button>
+
+
+    <!-- TEXT WILL APPEAR HERE -->
+    <div
+        class="reminder"
+        id="reminder">
+    </div>
+
+
+    <!-- NEXT BUTTON -->
+    <button
+        class="button next-button"
+        id="nextButton"
+        onclick="showNextReminder()">
+
+        read the next one ♡
+
+    </button>
+
+
+    <!-- ONLY APPEARS AFTER ALL TEXTS -->
+    <button
+        class="button final-button"
+        id="finalButton"
+        onclick="goToNextPage()">
+
+        okay... now take my hand → ♡
+
+    </button>
+
+</div>
+
+
+<script>
+
+const reminders = [
+
+`
+hey. look at me . ♡
+
+whatever you're imagining right now ,
+it hasn't changed the way i feel about you .
+
+breathe .
+
+you're okay .
+`,
+
+`
+your brain is not always telling you the truth .
+
+especially when you're tired .
+especially when it's late .
+especially when you're scared .
+
+so don't believe every scary thought
+that crosses your mind .
+
+come back to me instead . ♡
+`,
+
+`
+you don't have to be perfect
+to be loved by me .
+
+you can be confused .
+you can be tired .
+you can have bad days .
+
+you can simply be you .
+
+and i'll always choose you .
+`,
+
+`
+please don't try to solve tomorrow
+with today's anxiety .
+
+you haven't reached tomorrow yet .
+
+right now,
+you're here .
+we're here .
+
+
+and right now ,
+you are loved . 🌷
+`,
+
+`
+if something is bothering you ,
+you never have to be embarrassed
+about needing reassurance .
+
+you can ask .
+
+i'll tell you .
+
+again .
+and again .
+and again . 
+and againnnnnnnnnnnnnnnnnnnnnnn .
+as many times as you need . ♡
+`,
+
+`
+i am not secretly looking for reasons
+to leave .
+
+i am not keeping a list
+of your mistakes .
+
+i love you .
+i really really love you .
+i loveeeeeeeeeeee youuuuuuuuuuuuuuuuuu soooooooooooooooooooo muchieeeeeeeeeeeeeeeeee .
+
+please let that be louder
+than the overthinking . 🎀
+`,
+
+`
+and if your brain is still being meanie to you 
+
+remember this:
+
+one bad moment
+doesn't erase all the good ones .
+
+one misunderstanding
+doesn't erase everything between us .
+
+one difficult day
+doesn't change how special you are to me .
+`,
+
+`
+so...
+
+take one more breath .
+
+unclench your jaw .
+drop your shoulders .
+
+you don't have to figure everything out tonight .
+
+you can rest now, baby . ♡
+`,
+
+`
+and finally...
+
+if you ever forget how much
+you mean to me ,
+
+come back here .
+
+i'll remind you.
+
+because you are loved .
+you are wanted .
+you are important .
+
+and you are my favourite person . ♡
+`
+
+];
+
+
+let currentReminder = -1;
+
+
+const reminderBox =
+    document.getElementById("reminder");
+
+const startButton =
+    document.getElementById("startButton");
+
+const nextButton =
+    document.getElementById("nextButton");
+
+const finalButton =
+    document.getElementById("finalButton");
+
+
+// Hide these when page first loads
+nextButton.style.display = "none";
+finalButton.style.display = "none";
+
+
+function showNextReminder() {
+
+    currentReminder++;
+
+
+    // Put the next message inside the paper
+    reminderBox.innerHTML =
+        reminders[currentReminder]
+        .replace(/\n/g, "<br>");
+
+
+    reminderBox.style.display = "block";
+
+
+    // Little animation
+    reminderBox.style.animation = "none";
+
+    void reminderBox.offsetWidth;
+
+    reminderBox.style.animation =
+        "letterAppear .6s ease";
+
+
+    // Hide first button after first click
+    startButton.style.display = "none";
+
+
+    // If there are still messages left
+    if (currentReminder < reminders.length - 1) {
+
+        nextButton.style.display =
+            "inline-block";
+
+        finalButton.style.display =
+            "none";
+
+    }
+
+    // If this was the LAST message
+    else {
+
+        nextButton.style.display =
+            "none";
+
+        finalButton.style.display =
+            "inline-block";
+
+    }
+
+}
+
+
+// Go to your next page
+function goToNextPage() {
+
+    window.location.href =
+        "page4.html";
+
+}
+
+</script>
+
+
+</body>
+</html>

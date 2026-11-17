@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Wish ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+<!-- Confetti library for celebration -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(176,143,196,.30), transparent 28%),
+        radial-gradient(circle at 15% 20%, rgba(255,220,239,.16), transparent 20%),
+        radial-gradient(circle at 85% 80%, rgba(129,102,167,.25), transparent 25%),
+        linear-gradient(135deg, #211827, #302039, #1b1828, #261a31);
+    color: #fff5fa;
+    font-family: "Caveat", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Star dust background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .5;
+    background-image: radial-gradient(white 1px, transparent 1.5px);
+    background-size: 55px 55px;
+    animation: starsMove 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes starsMove {
+    from { background-position: 0 0; }
+    to { background-position: 55px 55px; }
+}
+
+/* Main Container */
+.container {
+    width: min(480px, 92%);
+    background: linear-gradient(145deg, #fff3f6, #ead8e8);
+    border: 1px dashed #b5a499;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
+    color: #3b2838;
+}
+
+.top-tag {
+    font-size: 18px;
+    color: #865078;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-family: "Parisienne", cursive;
+    font-size: 48px;
+    color: #4a2945;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+p.instruction {
+    font-size: 21px;
+    color: #71365f;
+    margin-bottom: 30px;
+}
+
+/* Cake & Candles Setup */
+.cake-area {
+    position: relative;
+    width: 260px;
+    height: 160px;
+    margin: 0 auto 30px;
+}
+
+.cake-body {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 220px;
+    height: 80px;
+    background: #f2a6a6;
+    border-radius: 12px 12px 6px 6px;
+    border: 2px solid #d48a8a;
+    box-shadow: inset 0 -12px 0 rgba(0,0,0,0.06);
+}
+
+.cake-frosting {
+    position: absolute;
+    top: 72px;
+    left: 18px;
+    width: 224px;
+    height: 25px;
+    background: #fff;
+    border-radius: 12px;
+    border-bottom: 2px dashed #d48a8a;
+}
+
+/* Candles Row */
+.candles-row {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.candle-stick {
+    position: relative;
+    width: 12px;
+    height: 55px;
+    background: linear-gradient(90deg, #d8a47f, #f4d0bc);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Flame */
+.flame {
+    position: absolute;
+    top: -22px;
+    left: -2px;
+    width: 16px;
+    height: 24px;
+    background: #ffaa33;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 12px #ffbb55, 0 0 25px #ff5500;
+    animation: flicker 0.6s infinite alternate;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.flame.extinguished {
+    transform: scale(0);
+    opacity: 0;
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+    100% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+}
+
+/* Interactive Button */
+.blow-btn {
+    background: #9b5c91;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.blow-btn:hover {
+    transform: translateY(-3px);
+    background: #b674a8;
+}
+
+/* Wish Granted Letter / Message */
+.birthday-letter {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border: 1px dotted #a57197;
+    border-radius: 4px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #4a2945;
+    display: none;
+    animation: fadeIn 0.6s ease forwards;
+    text-align: left;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.next-container {
+    margin-top: 20px;
+    display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-tag">K & P · BDAY SPECIAL</div>
+    <h1>make a wish ♡</h1>
+    <p class="instruction" id="instruction-text">tap the button to blow out all the candles!</p>
+
+    <!-- Cake & 3 Interactive Candles -->
+    <div class="cake-area">
+        <div class="candles-row">
+            <div class="candle-stick" onclick="extinguishOne(this)">
+                <div class="flame"></div>
+            </div>
+            <div class="candle-stick" onclick="extinguishOne(this)">
+                <div class="flame"></div>
+            </div>
+            <div class="candle-stick" onclick="extinguishOne(this)">
+                <div class="flame"></div>
+            </div>
+        </div>
+        <div class="cake-frosting"></div>
+        <div class="cake-body"></div>
+    </div>
+
+    <!-- Blow Action Button -->
+    <button class="blow-btn" id="action-btn" onclick="blowAllCandles()">
+        blow out the candles 🌬️✨
+    </button>
+
+    <!-- Secret Birthday Letter that reveals -->
+    <div id="birthday-letter" class="birthday-letter">
+        <b>Happy Birthday, my love! 🎉💗</b><br><br>
+        Your wish has been locked in, and I hope all your biggest dreams come true this year. Thank you for being the most magical part of my everyday life. Let's celebrate you today and always! ♡
+    </div>
+
+    <div class="next-container" id="next-box">
+        <button class="blow-btn" onclick="window.location.href='page5.html'">
+            continue our journey →
+        </button>
+    </div>
+</div>
+ <a href="page7.html" style="text-decoration: none;">
+  <button class="next-btn"></button>
+</a>
+<div class="next-btn-container">
+                <a href="page7.html"><button class="next-btn"> for more huggie , press balls ʕ⁠っ⁠•⁠ᴥ⁠•⁠ʔ⁠っ &rarr;</button></a>
+            </div>
+
+
+<script>
+    let blownCount = 0;
+    const flames = document.querySelectorAll('.flame');
+
+    // Individual candle click karne par ek-ek bujhegi
+    function extinguishOne(candleElement) {
+        const flame = candleElement.querySelector('.flame');
+        if (!flame.classList.contains('extinguished')) {
+            flame.classList.add('extinguished');
+            blownCount++;
+            checkAllBlown();
+        }
+    }
+
+    // Button click karne par saari ek sath bujhegi
+    function blowAllCandles() {
+        flames.forEach(f => f.classList.add('extinguished'));
+        blownCount = flames.length;
+        checkAllBlown();
+    }
+
+    function checkAllBlown() {
+        if (blownCount >= flames.length) {
+            document.getElementById('instruction-text').innerText = "wish granted! ✨🥂";
+            document.getElementById('action-btn').style.display = 'none';
+            document.getElementById('birthday-letter').style.display = 'block';
+            document.getElementById('next-box').style.display = 'block';
+
+            // Confetti effect
+            try {
+                if (typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 120,
+                        spread: 80,
+                        origin: { y: 0.6 }
+                    });
+                }
+            } catch (e) {}
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 tiny reasons ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(176,143,196,.30), transparent 28%),
+        radial-gradient(circle at 15% 20%, rgba(255,220,239,.16), transparent 20%),
+        radial-gradient(circle at 85% 80%, rgba(129,102,167,.25), transparent 25%),
+        linear-gradient(135deg, #211827, #302039, #1b1828, #261a31);
+    color: #fff5fa;
+    font-family: "Cormorant Garamond", serif;
+    position: relative;
+}
+
+/* STAR DUST */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .5;
+    background-image: radial-gradient(white 1px, transparent 1.5px);
+    background-size: 55px 55px;
+    animation: starsMove 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes starsMove {
+    from { background-position: 0 0; }
+    to { background-position: 55px 55px; }
+}
+
+/* INDIVIDUAL SPARKLES */
+.star {
+    position: fixed;
+    color: #ffeaf8;
+    z-index: 2;
+    pointer-events: none;
+    animation: twinkle 2.8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .15; transform: scale(.5) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.4) rotate(25deg); }
+}
+
+/* HUGE LACE BOW */
+.big-bow {
+    position: fixed;
+    width: 330px;
+    height: 250px;
+    top: -70px;
+    right: -80px;
+    opacity: .48;
+    z-index: 1;
+    transform: rotate(12deg);
+}
+
+.big-bow::before,
+.big-bow::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 145px;
+    border-radius: 65% 35% 60% 40%;
+    border: 4px dotted rgba(255,220,240,.55);
+    background: rgba(158,110,155,.16);
+    box-shadow: inset 0 0 25px rgba(255,210,235,.1);
+}
+
+.big-bow::before { left: 0; transform: rotate(20deg); }
+.big-bow::after { right: 0; transform: rotate(-20deg); }
+
+.bow-knot {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    background: rgba(202,143,190,.45);
+    border: 3px dotted rgba(255,225,240,.6);
+    border-radius: 50%;
+    left: 133px;
+    top: 75px;
+    z-index: 2;
+}
+
+/* FAIRIES */
+.fairy {
+    position: absolute;
+    z-index: 5;
+    font-size: 42px;
+    filter: drop-shadow(0 0 10px rgba(255,214,245,.65));
+    animation: fairyFloat 5s ease-in-out infinite;
+}
+.fairy.one { top: 18%; left: 6%; }
+.fairy.two { top: 60%; right: 7%; animation-delay: 1.8s; }
+.fairy.three { bottom: 7%; left: 14%; font-size: 31px; animation-delay: 3s; }
+
+@keyframes fairyFloat {
+    0%,100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-18px) rotate(5deg); }
+}
+
+/* PAGE */
+.page {
+    width: min(1150px, 94%);
+    margin: auto;
+    min-height: 100vh;
+    padding: 80px 20px 100px;
+    position: relative;
+    z-index: 4;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.eyebrow {
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #dcb4d8;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-family: "Parisienne", cursive;
+    font-size: clamp(55px, 9vw, 90px);
+    font-weight: 400;
+    line-height: 1;
+    color: #fff0f8;
+    text-shadow: 0 0 15px rgba(237,185,224,.35);
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-family: "Caveat", cursive;
+    font-size: 23px;
+    color: #d7c2d8;
+}
+
+/* MIRROR */
+.mirror {
+    width: min(440px, 90%);
+    height: 520px;
+    margin: 0 auto 55px;
+    position: relative;
+    border-radius: 50% 50% 46% 46%;
+    border: 13px solid #806188;
+    background: radial-gradient(circle, rgba(221,190,229,.20), rgba(83,57,96,.25));
+    box-shadow: 0 0 0 5px rgba(225,189,222,.15), 0 20px 60px rgba(0,0,0,.45), inset 0 0 50px rgba(255,220,245,.12);
+}
+
+.mirror::before {
+    content: "✦";
+    position: absolute;
+    top: 60px;
+    left: 75px;
+    font-size: 38px;
+    color: rgba(255,255,255,.6);
+}
+
+.mirror::after {
+    content: "♡";
+    position: absolute;
+    bottom: 60px;
+    right: 70px;
+    font-size: 35px;
+    color: rgba(255,220,245,.5);
+}
+
+/* MIRROR MESSAGE */
+.mirror-message {
+    position: absolute;
+    top: 180px;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+}
+
+.mirror-message .small {
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #d5bad7;
+}
+
+.mirror-message h2 {
+    font-family: "Parisienne", cursive;
+    font-size: 47px;
+    font-weight: 400;
+    color: #fff0f8;
+    margin: 12px 0;
+}
+
+.mirror-message p {
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+    color: #d8c5da;
+}
+
+/* PROGRESS */
+.progress {
+    text-align: center;
+    margin: 40px auto 25px;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    color: #cbb3cf;
+}
+.progress span { color: #f3cce6; }
+
+/* ENVELOPE GRID */
+.envelopes {
+    width: min(1000px, 100%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px;
+}
+
+.envelope {
+    height: 150px;
+    position: relative;
+    cursor: pointer;
+    perspective: 700px;
+    transition: transform .35s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-9px) rotate(-1deg);
+}
+
+.envelope-body {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #f4dce8, #e5c7dc);
+    border: 1px solid rgba(255,255,255,.45);
+    box-shadow: 0 12px 20px rgba(0,0,0,.28);
+}
+
+.envelope-body::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 49%, rgba(122,78,120,.25) 50%, transparent 51%);
+}
+
+.flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(135deg, #e9cada, #d6b3d0);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform .65s ease;
+    z-index: 4;
+}
+
+.envelope-number {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 85px;
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    color: #5a3659;
+    z-index: 5;
+}
+
+.envelope-heart {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    font-size: 17px;
+    z-index: 5;
+    color: #823d70;
+}
+
+.envelope.opened {
+    transform: translateY(-8px) rotate(0deg);
+}
+.envelope.opened .flap {
+    transform: rotateX(180deg);
+}
+
+/* POPUP */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,9,21,.78);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.letter {
+    width: min(620px, 95%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 50px 45px;
+    background: linear-gradient(145deg, #fff3f6, #ead8e8);
+    color: #3b2838;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    transform: rotate(-1deg);
+    animation: letterIn .5s ease;
+}
+
+@keyframes letterIn {
+    from { opacity: 0; transform: scale(.85) rotate(-5deg); }
+    to { opacity: 1; transform: scale(1) rotate(-1deg); }
+}
+
+.letter::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 40%;
+    width: 100px;
+    height: 24px;
+    background: rgba(165,113,151,.45);
+    transform: rotate(-3deg);
+}
+
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    cursor: pointer;
+    color: #71365f;
+}
+
+.letter-number {
+    font-family: "Caveat", cursive;
+    font-size: 19px;
+    color: #865078;
+}
+
+.letter h2 {
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-size: 50px;
+    margin: 10px 0 25px;
+    color: #4a2945;
+}
+
+.letter p {
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+/* FINAL */
+.final {
+    text-align: center;
+    display: none;
+    margin-top: 50px;
+    animation: fadeIn .8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.final h2 {
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-size: 45px;
+    color: #ffe8f5;
+}
+
+.final p {
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    color: #cdb7cf;
+    margin: 10px 0 25px;
+}
+
+.next-button {
+    border: none;
+    padding: 15px 32px;
+    background: #9b5c91;
+    color: white;
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+    transition: .3s ease;
+}
+
+.next-button:hover {
+    transform: translateY(-4px);
+    background: #b674a8;
+}
+
+/* MOBILE */
+@media(max-width:850px) {
+    .envelopes { grid-template-columns: repeat(3, 1fr); }
+}
+@media(max-width:600px) {
+    .page { padding-top: 70px; }
+    .big-bow { transform: scale(.6) rotate(12deg); right: -120px; }
+    .mirror { height: 430px; }
+    .mirror-message { top: 145px; }
+    .mirror-message h2 { font-size: 38px; }
+    .envelopes { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .envelope { height: 135px; }
+    .letter { padding: 40px 25px; }
+    .letter h2 { font-size: 42px; }
+    .letter p { font-size: 21px; }
+}
+@media(max-width:380px) {
+    .envelopes { grid-template-columns: 1fr; max-width: 240px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="big-bow"><div class="bow-knot"></div></div>
+
+<div class="star" style="top:10%;left:12%;">✦</div>
+<div class="star" style="top:20%;right:20%;animation-delay:1s;">✧</div>
+<div class="star" style="top:50%;left:8%;animation-delay:1.7s;">⋆</div>
+<div class="star" style="bottom:20%;right:12%;animation-delay:.5s;">✦</div>
+<div class="star" style="bottom:10%;left:30%;animation-delay:2s;">✧</div>
+
+<div class="fairy one">🧚🏻‍♀️</div>
+<div class="fairy two">🧚🏻‍♀️</div>
+<div class="fairy three">🧚🏻‍♀️</div>
+
+<div class="page">
+    <header class="header">
+        <div class="eyebrow">✧ a little collection of thoughts ✧</div>
+        <h1>10 tiny reasons</h1>
+        <div class="subtitle">i hope you never forget these .</div>
+    </header>
+
+    <div class="mirror">
+        <div class="mirror-message">
+            <div class="small">look closely...</div>
+            <h2>they're all about you ♡</h2>
+            <p>ten little envelopes .<br>ten things i love .</p>
+        </div>
+    </div>
+
+    <div class="progress">
+        you've opened <span id="count">0</span> / 10
+    </div>
+
+    <div class="envelopes">
+        <div class="envelope" data-index="0"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">01</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="1"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">02</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="2"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">03</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="3"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">04</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="4"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">05</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="5"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">06</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="6"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">07</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="7"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">08</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="8"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">09</div><div class="envelope-heart">♡</div></div>
+        <div class="envelope" data-index="9"><div class="envelope-body"></div><div class="flap"></div><div class="envelope-number">10</div><div class="envelope-heart">♡</div></div>
+    </div>
+
+    <div class="final" id="final">
+        <h2>you found all ten ♡</h2>
+        <p>and somehow , i still have more to tell you .</p>
+        <button class="next-button" onclick="goNext()">there's something else... →</button>
+    </div>
+</div>
+
+<div class="overlay" id="overlay">
+    <div class="letter">
+        <div class="close" id="closeButton">×</div>
+        <div class="letter-number" id="letterNumber"></div>
+        <h2 id="letterTitle"></h2>
+        <p id="letterText"></p>
+    </div>
+</div> 
+<div class="next-btn-container">
+                <a href="page5.html"><button class="next-btn"> for suprise , press balls ʕ⁠っ⁠•⁠ᴥ⁠•⁠ʔ⁠っ &rarr;</button></a>
+            </div>
+
+
+<script>
+const notes = [
+    {
+        number: "01 · the little things",
+        title: "your laugh ♡",
+        text: `i don't think you realise how much i love hearing you laugh .
+        especially the really stupid , uncontrollable kind .
+        it's one of those tiny sounds that can completely change my mood .
+        i hope i get to hear it a million more times .`
+    },
+    {
+        number: "02 · something i notice",
+        title: "the way you care ♡",
+        text: `you care about people in ways you probably don't even notice .
+        the little questions . the tiny check-ins . the things you remember .
+        you might think they're small . they're not small to me .`
+    },
+    {
+        number: "03 · my favourite version",
+        title: "your silly side ♡",
+        text: `please never grow out of being ridiculous .
+        i love your random jokes . your weird moments . the things that make absolutely no sense .
+        i love when you forget to be serious . that version of you is one of my favourites .`
+    },
+    {
+        number: "04 · something soft",
+        title: "your voice ♡",
+        text: `there is something about your voice .
+        even if you're telling me the most boring story in the world . i still want to listen .
+        somehow hearing you makes ordinary moments feel a little more special .`
+    },
+    {
+        number: "05 · a tiny confession",
+        title: "your presence ♡",
+        text: `sometimes you don't even have to do anything .
+        just knowing you're there makes things feel different .
+        you have this strange ability to make ordinary days feel less ordinary .
+        i don't how you do that . but i hope you never stop .`
+    },
+    {
+        number: "06 · please remember",
+        title: "you don't have to be perfect ♡",
+        text: `i don't love some imaginary perfect version of you .
+        i love you as you actually are . with your moods . your mistakes . your weird days . your overthinking .
+        you never have to perform for me . just be you .`
+    },
+    {
+        number: "07 · one of my favourites",
+        title: "the way you make me smile ♡",
+        text: `sometimes i catch myself smiling at my phone because of something you said .
+        and then i realise , oh . it's him .
+        you're responsible for a ridiculous amount of my random smiles .`
+    },
+    {
+        number: "08 · don't forget this",
+        title: "you matter to me ♡",
+        text: `i hope you never measure your worth by how productive you were that day .
+        or how well everything went . or whether you made a mistake .
+        you matter to me because you're you . nothing more complicated than that .`
+    },
+    {
+        number: "09 · a future thought",
+        title: "more memories ♡",
+        text: `do you know how crazy it is that we've already made so many memories .
+        and there are still so many we haven't made ? places we haven't gone . photos we haven't taken .
+        i can't wait for those .`
+    },
+    {
+        number: "10 · the important one",
+        title: "simply you ♡",
+        text: `if you asked me to choose one thing i love about you .
+        i genuinely don't think i could . because it's not one thing . it's you .
+        the whole person . that's the reason . and i hope you never , ever forget that .`
+    }
+];
+
+const envelopes = document.querySelectorAll(".envelope");
+const overlay = document.getElementById("overlay");
+const closeButton = document.getElementById("closeButton");
+const letterNumber = document.getElementById("letterNumber");
+const letterTitle = document.getElementById("letterTitle");
+const letterText = document.getElementById("letterText");
+const count = document.getElementById("count");
+const final = document.getElementById("final");
+
+const opened = new Set();
+
+envelopes.forEach((envelope) => {
+    envelope.addEventListener("click", function() {
+        const index = Number(this.dataset.index);
+
+        if (!opened.has(index)) {
+            opened.add(index);
+            this.classList.add("opened");
+            count.innerText = opened.size;
+        }
+
+        letterNumber.innerText = notes[index].number;
+        letterTitle.innerText = notes[index].title;
+        letterText.innerHTML = notes[index].text.trim().replace(/\n/g, "<br>");
+
+        overlay.style.display = "flex";
+
+        if (opened.size === 10) {
+            setTimeout(() => {
+                final.style.display = "block";
+            }, 400);
+        }
+    });
+});
+
+closeButton.addEventListener("click", function() {
+    overlay.style.display = "none";
+});
+
+overlay.addEventListener("click", function(event) {
+    if (event.target === overlay) {
+        overlay.style.display = "none";
+    }
+});
+
+function goNext() {
+    window.location.href = "page5.html";
+}
+</script>
+
+</body>
+</html>
